@@ -1,0 +1,136 @@
+@model Damanak.Models.Guarantee
+
+@{
+    ViewData["Title"] = "بطاقة الضمان";
+    var daysLeft = (Model.WarrantyEndDate.Date - DateTime.Today).Days;
+    var statusText = Model.Status == "Active" ? "ساري" :
+                     Model.Status == "ExpiringSoon" ? "قارب على الانتهاء" :
+                     "منتهي";
+}
+
+<section class="wallet-page">
+    <div class="container">
+
+        @if (TempData["WalletError"] != null)
+        {
+            <div class="alert alert-warning wallet-alert">
+                @TempData["WalletError"]
+            </div>
+        }
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6">
+                <div class="wallet-info-panel">
+
+                    <span class="wallet-badge">
+                        Apple Wallet Preview
+                    </span>
+
+                    <h1 class="wallet-title">
+                        بطاقة ضمان رقمية
+                    </h1>
+
+                    <p class="wallet-description">
+                        هذه معاينة لبطاقة الضمان الرقمية. يمكنك فتح رابط البطاقة وإضافتها إلى Wallet من خلال Pass2U.
+                    </p>
+
+                    <div class="wallet-note">
+                        <strong>الميزة الحالية:</strong>
+                        عرض بطاقة ضمان رقمية داخل النظام.
+                        <br />
+                        <strong>المرحلة القادمة:</strong>
+                        توليد بطاقة Wallet مخصصة لكل ضمان عبر API.
+                    </div>
+
+                    <div class="wallet-actions">
+                        <a asp-controller="Guarantees" asp-action="Details" asp-route-id="@Model.Id"
+                           class="btn btn-outline-custom">
+                            رجوع للتفاصيل
+                        </a>
+
+                        <a asp-controller="Guarantees" asp-action="AddToWallet" asp-route-id="@Model.Id"
+                           class="btn btn-primary-custom wallet-click-btn">
+                            Add to Apple Wallet
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="wallet-preview-wrap">
+
+                    <div class="wallet-pass-card">
+
+                        <div class="wallet-pass-top">
+                            <div class="wallet-logo-box">
+                                <img src="~/images/damank1.png" alt="Damanak" />
+                            </div>
+
+                            <div>
+                                <span>DAMANAK WARRANTY</span>
+                                <h2>@Model.ProductName</h2>
+                            </div>
+                        </div>
+
+                        <div class="wallet-pass-grid">
+                            <div>
+                                <small>الحالة</small>
+                                <strong class="wallet-status">@statusText</strong>
+                            </div>
+
+                            <div>
+                                <small>المتجر</small>
+                                <strong>@Model.StoreName</strong>
+                            </div>
+                        </div>
+
+                        <div class="wallet-pass-box">
+                            <div>
+                                <small>الماركة</small>
+                                <strong>@Model.Brand</strong>
+                            </div>
+
+                            <div>
+                                <small>الموديل</small>
+                                <strong>@Model.ModelName</strong>
+                            </div>
+                        </div>
+
+                        <div class="wallet-pass-grid">
+                            <div>
+                                <small>تاريخ الشراء</small>
+                                <strong>@Model.PurchaseDate.ToString("yyyy/MM/dd")</strong>
+                            </div>
+
+                            <div>
+                                <small>انتهاء الضمان</small>
+                                <strong>@Model.WarrantyEndDate.ToString("yyyy/MM/dd")</strong>
+                            </div>
+                        </div>
+
+                        <div class="wallet-pass-bottom">
+                            <div>
+                                <small>الأيام المتبقية</small>
+                                <strong>
+                                    @(daysLeft > 0 ? $"{daysLeft} يوم" : "منتهي")
+                                </strong>
+                            </div>
+
+                            <div class="wallet-qr-icon">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

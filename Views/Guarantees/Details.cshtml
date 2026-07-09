@@ -1,0 +1,147 @@
+@model Damanak.Models.Guarantee
+
+@{
+    ViewData["Title"] = "تفاصيل الضمان";
+}
+
+<section class="py-5">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+            <div>
+                <h2 class="section-title mb-1">تفاصيل الضمان</h2>
+                <p class="section-subtitle mb-0">
+                    بيانات المنتج والفاتورة ومدة الضمان.
+                </p>
+                <div class="d-flex gap-2 flex-wrap">
+                    <a asp-action="AddToWallet" asp-route-id="@Model.Id" class="btn btn-wallet">
+                        Add to Apple Wallet
+                    </a>
+
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary-custom">
+                        تعديل
+                    </a>
+
+                    <a asp-action="Index" class="btn btn-outline-custom">
+                        رجوع
+                    </a>
+                </div>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-lg-8">
+                    <div class="custom-card h-100">
+
+                        <h4 class="section-title">@Model.ProductName</h4>
+
+                        <p class="section-subtitle">
+                            @Model.Brand @Model.ModelName
+                        </p>
+
+                        <hr />
+
+                        <div class="row g-4">
+
+                            <div class="col-md-6">
+                                <h6 class="section-title">المتجر</h6>
+                                <p class="section-subtitle mb-0">@Model.StoreName</p>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h6 class="section-title">التصنيف</h6>
+                                <p class="section-subtitle mb-0">@Model.Category</p>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h6 class="section-title">السعر</h6>
+                                <p class="section-subtitle mb-0">@Model.Price.ToString("N2") ريال</p>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h6 class="section-title">الرقم التسلسلي</h6>
+                                <p class="section-subtitle mb-0">
+                                    @(string.IsNullOrEmpty(Model.SerialNumber) ? "غير مسجل" : Model.SerialNumber)
+                                </p>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h6 class="section-title">تاريخ الشراء</h6>
+                                <p class="section-subtitle mb-0">@Model.PurchaseDate.ToString("yyyy/MM/dd")</p>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h6 class="section-title">تاريخ انتهاء الضمان</h6>
+                                <p class="section-subtitle mb-0">@Model.WarrantyEndDate.ToString("yyyy/MM/dd")</p>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h6 class="section-title">حالة الضمان</h6>
+
+                                @if (Model.Status == "Active")
+                                {
+                                    <span class="badge-active">ساري</span>
+                                }
+                                else if (Model.Status == "ExpiringSoon")
+                                {
+                                    <span class="badge-pending">ينتهي قريبًا</span>
+                                }
+                                else
+                                {
+                                    <span class="badge-expired">منتهي</span>
+                                }
+                            </div>
+
+                            <div class="col-md-6">
+                                <h6 class="section-title">الفاتورة</h6>
+
+                                @if (!string.IsNullOrEmpty(Model.InvoiceImagePath))
+                                {
+                                    <a href="@Model.InvoiceImagePath" target="_blank" class="btn btn-outline-custom">
+                                        عرض الفاتورة
+                                    </a>
+                                }
+                                else
+                                {
+                                    <p class="section-subtitle mb-0">لا توجد فاتورة مرفقة</p>
+                                }
+                            </div>
+
+                            <div class="col-12">
+                                <h6 class="section-title">ملاحظات</h6>
+                                <p class="section-subtitle mb-0">
+                                    @(string.IsNullOrEmpty(Model.Notes) ? "لا توجد ملاحظات" : Model.Notes)
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="custom-card h-100">
+                        <h5 class="section-title">سجل العمليات</h5>
+
+                        @if (Model.Activities == null || !Model.Activities.Any())
+                        {
+                            <p class="section-subtitle">لا يوجد سجل عمليات حتى الآن.</p>
+                        }
+                        else
+                        {
+                            @foreach (var activity in Model.Activities.OrderByDescending(a => a.CreatedAt))
+                            {
+                                <div class="border-bottom py-3">
+                                    <h6 class="mb-1 text-primary-custom">@activity.Action</h6>
+                                    <p class="section-subtitle mb-1">@activity.Notes</p>
+                                    <small class="text-muted">@activity.CreatedAt.ToString("yyyy/MM/dd - hh:mm tt")</small>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>

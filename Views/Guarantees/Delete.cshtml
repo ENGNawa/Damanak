@@ -1,0 +1,64 @@
+@model Damanak.Models.Guarantee
+
+@{
+    ViewData["Title"] = "حذف الضمان";
+}
+
+<section class="py-5">
+    <div class="container">
+
+        <div class="custom-card">
+
+            <h2 class="section-title text-danger">
+                حذف الضمان
+            </h2>
+
+            <p class="section-subtitle">
+                هل أنتِ متأكدة من حذف ضمان هذا المنتج؟ لا يمكن التراجع عن هذه العملية.
+            </p>
+
+            <div class="stats-card my-4">
+                <h4 class="section-title">
+                    @Model.ProductName
+                </h4>
+
+                <p class="section-subtitle">
+                    @Model.Brand @Model.ModelName
+                </p>
+
+                <div class="row g-3 mt-3">
+                    <div class="col-md-4">
+                        <strong>المتجر:</strong>
+                        <p>@Model.StoreName</p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <strong>السعر:</strong>
+                        <p>@Model.Price.ToString("N2") ريال</p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <strong>انتهاء الضمان:</strong>
+                        <p>@Model.WarrantyEndDate.ToString("yyyy/MM/dd")</p>
+                    </div>
+                </div>
+            </div>
+
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="d-flex gap-3 flex-wrap">
+                    <button type="submit" class="btn btn-danger">
+                        نعم، حذف الضمان
+                    </button>
+
+                    <a asp-action="Index" class="btn btn-outline-custom">
+                        إلغاء
+                    </a>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</section>

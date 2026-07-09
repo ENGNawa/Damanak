@@ -1,0 +1,70 @@
+@model Damanak.Models.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "تسجيل الدخول";
+}
+
+<section class="py-5">
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+
+                <div class="custom-card">
+
+                    <div class="text-center mb-4">
+                        <img src="~/images/damank1.png" class="hero-logo" alt="ضمانك" />
+
+                        <h2 class="section-title">
+                            تسجيل الدخول
+                        </h2>
+
+                        <p class="section-subtitle">
+                            ادخل إلى حسابك لإدارة ضماناتك.
+                        </p>
+                    </div>
+
+                    <form asp-action="Login" method="post">
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label">البريد الإلكتروني</label>
+                            <input asp-for="Email" class="form-control" placeholder="example@email.com" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label">كلمة المرور</label>
+                            <input asp-for="Password" type="password" class="form-control" placeholder="******" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary-custom">
+                                دخول
+                            </button>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <span class="section-subtitle">ليس لديك حساب؟</span>
+                            <a asp-controller="Account" asp-action="Register" class="text-secondary-custom fw-bold">
+                                إنشاء حساب
+                            </a>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

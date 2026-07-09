@@ -1,0 +1,136 @@
+@model Damanak.Models.Guarantee
+
+@{
+    ViewData["Title"] = "تعديل الضمان";
+}
+
+<section class="py-5">
+    <div class="container">
+
+        <div class="mb-4">
+            <h2 class="section-title">تعديل ضمان المنتج</h2>
+            <p class="section-subtitle">
+                حدّثي بيانات المنتج أو أرفقي فاتورة جديدة.
+            </p>
+        </div>
+
+        <div class="custom-card">
+
+            <form asp-action="Edit" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="CreatedAt" />
+                <input type="hidden" asp-for="InvoiceImagePath" />
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="row g-4">
+
+                    <div class="col-md-6">
+                        <label asp-for="ProductName" class="form-label">اسم المنتج</label>
+                        <input asp-for="ProductName" class="form-control" />
+                        <span asp-validation-for="ProductName" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Category" class="form-label">التصنيف</label>
+                        <select asp-for="Category" class="form-select">
+                            <option value="">اختاري التصنيف</option>
+                            <option value="جوالات">جوالات</option>
+                            <option value="أجهزة منزلية">أجهزة منزلية</option>
+                            <option value="إلكترونيات">إلكترونيات</option>
+                            <option value="مطبخ">مطبخ</option>
+                            <option value="أثاث">أثاث</option>
+                            <option value="أخرى">أخرى</option>
+                        </select>
+                        <span asp-validation-for="Category" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="StoreName" class="form-label">المتجر</label>
+                        <input asp-for="StoreName" class="form-control" />
+                        <span asp-validation-for="StoreName" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Brand" class="form-label">الماركة</label>
+                        <input asp-for="Brand" class="form-control" />
+                        <span asp-validation-for="Brand" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="ModelName" class="form-label">الموديل</label>
+                        <input asp-for="ModelName" class="form-control" />
+                        <span asp-validation-for="ModelName" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="SerialNumber" class="form-label">الرقم التسلسلي</label>
+                        <input asp-for="SerialNumber" class="form-control" />
+                        <span asp-validation-for="SerialNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label asp-for="Price" class="form-label">السعر</label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label asp-for="PurchaseDate" class="form-label">تاريخ الشراء</label>
+                        <input asp-for="PurchaseDate" type="date" class="form-control" />
+                        <span asp-validation-for="PurchaseDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label asp-for="WarrantyEndDate" class="form-label">تاريخ انتهاء الضمان</label>
+                        <input asp-for="WarrantyEndDate" type="date" class="form-control" />
+                        <span asp-validation-for="WarrantyEndDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">تحديث الفاتورة</label>
+                        <input type="file" name="invoiceImage" class="form-control" accept=".jpg,.jpeg,.png,.pdf" />
+
+                        @if (!string.IsNullOrEmpty(Model.InvoiceImagePath))
+                        {
+                            <div class="mt-2">
+                                <a href="@Model.InvoiceImagePath" target="_blank" class="text-secondary-custom fw-bold">
+                                    عرض الفاتورة الحالية
+                                </a>
+                            </div>
+                        }
+
+                        <span asp-validation-for="InvoiceImagePath" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label asp-for="Notes" class="form-label">ملاحظات</label>
+                        <textarea asp-for="Notes" class="form-control" rows="4"></textarea>
+                        <span asp-validation-for="Notes" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="d-flex gap-3 mt-4 flex-wrap">
+                    <button type="submit" class="btn btn-primary-custom">
+                        حفظ التعديلات
+                    </button>
+
+                    <a asp-action="Index" class="btn btn-outline-custom">
+                        رجوع
+                    </a>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

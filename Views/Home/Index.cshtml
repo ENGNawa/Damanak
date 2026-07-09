@@ -1,8 +1,342 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "الرئيسية";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="premium-hero">
+    <div class="container">
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6">
+
+                <div class="hero-badge premium-badge">
+                    <span>منصة شخصية لإدارة الضمانات والفواتير</span>
+                </div>
+
+                <h1 class="premium-title typewriter-title">
+
+                    <span class="typewriter-line typewriter-line-small" data-ar="لا تبحث عن الفاتورة وقت الحاجة،"
+                          data-en="Never search for a receipt again,">
+                        لا تبحث عن الفاتورة وقت الحاجة،
+                    </span>
+
+                    <span class="typewriter-line typewriter-line-large">
+                        <span id="animatedHeroText" data-ar="ضمانك يرتبها لك."
+                              data-en="Damanak keeps it organized."></span>
+
+                        <span class="typing-cursor">|</span>
+                    </span>
+
+                </h1>
+                <p class="premium-text">
+                    احفظي ضمانات مشترياتك، صور الفواتير، بيانات المنتج، المتجر،
+                    وتاريخ انتهاء الضمان في لوحة واحدة واضحة وآمنة.
+                </p>
+
+                <div class="d-flex gap-3 flex-wrap mt-4">
+                    <a asp-controller="Guarantees" asp-action="Create" class="btn btn-primary-custom">
+                        إضافة ضمان جديد
+                    </a>
+
+                    <a asp-controller="Guarantees" asp-action="Index" class="btn btn-outline-custom">
+                        عرض ضماناتي
+                    </a>
+                </div>
+
+                <div class="hero-trust-row">
+                    <div>
+                        <strong>فاتورة</strong>
+                        <span>صورة أو PDF</span>
+                    </div>
+
+                    <div>
+                        <strong>تنبيه</strong>
+                        <span>قبل الانتهاء</span>
+                    </div>
+
+                    <div>
+                        <strong>بحث</strong>
+                        <span>بالمنتج أو المتجر</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+                <div class="hero-visual">
+
+                    <div class="visual-glow"></div>
+
+                    <div class="device-card">
+                        <div class="device-header">
+                            <div>
+                                <h5>ضماناتي</h5>
+                                <span>لوحة متابعة الضمانات</span>
+                            </div>
+
+                            <img src="~/images/damank1.png" alt="ضمانك" />
+                        </div>
+
+                        <div class="warranty-mini-card active">
+                            <div class="product-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" />
+                                    <path d="M11 18h2" />
+                                </svg>
+                            </div>
+                            <div>
+                                <strong>iPhone 15 Pro</strong>
+                                <span>الضمان ساري حتى 2027/04/12</span>
+                            </div>
+                            <small>ساري</small>
+                        </div>
+
+                        <div class="warranty-mini-card warning">
+                            <div class="product-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M6 3h12l-1 18H7L6 3Z" />
+                                    <path d="M9 7h6" />
+                                    <path d="M10 11h4" />
+                                </svg>
+                            </div>
+                            <div>
+                                <strong>غلاية كهربائية</strong>
+                                <span>ينتهي الضمان خلال 18 يوم</span>
+                            </div>
+                            <small>قريب</small>
+                        </div>
+
+                        <div class="invoice-preview">
+                            <div class="invoice-lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                            <div class="invoice-check">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20 6 9 17l-5-5" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="floating-card floating-one">
+                        <span>إجمالي الضمانات</span>
+                        <strong>24</strong>
+                    </div>
+
+                    <div class="floating-card floating-two">
+                        <span>تنتهي قريبًا</span>
+                        <strong>3</strong>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="py-5" id="services">
+    <div class="container">
+
+        <div class="section-heading">
+            <span>خدمات ضمانك</span>
+            <h2>كل ما تحتاجينه لحفظ ضمانات مشترياتك</h2>
+            <p>
+                بدل ما تتوزع الفواتير بين الصور والواتساب والإيميل، اجمعيها في مكان واحد مرتب.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="feature-card-pro h-100">
+                    <div class="feature-icon-pro">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M7 3h10a2 2 0 0 1 2 2v16l-3-2-3 2-3-2-3 2V5a2 2 0 0 1 2-2Z" />
+                            <path d="M9 8h6" />
+                            <path d="M9 12h6" />
+                            <path d="M9 16h4" />
+                        </svg>
+                    </div>
+
+                    <h5>حفظ الفواتير</h5>
+                    <p>
+                        ارفعي صورة الفاتورة أو ملف PDF، واحفظيه مع بيانات المنتج والضمان.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card-pro h-100">
+                    <div class="feature-icon-pro">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                            d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7Z" />
+                            <path d="M3.3 7 12 12l8.7-5" />
+                            <path d="M12 22V12" />
+                        </svg>
+                    </div>
+
+                    <h5>تنظيم المنتجات</h5>
+                    <p>
+                        سجلي اسم المنتج، التصنيف، المتجر، الماركة، الموديل، والرقم التسلسلي.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card-pro h-100">
+                    <div class="feature-icon-pro">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 8v5l3 2" />
+                            <path d="M21 12a9 9 0 1 1-9-9" />
+                            <path d="M16 3h5v5" />
+                        </svg>
+                    </div>
+
+                    <h5>متابعة الانتهاء</h5>
+                    <p>
+                        اعرفي الضمانات السارية، التي تنتهي قريبًا، والمنتهية من لوحة واحدة.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="category-showcase">
+    <div class="container">
+
+        <div class="section-heading">
+            <span>تصنيفات المنتجات</span>
+            <h2>مناسب لكل مشترياتك المهمة</h2>
+            <p>
+                من الأجهزة الصغيرة إلى الإلكترونيات والأجهزة المنزلية.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-3">
+                <div class="category-card-pro">
+                    <div class="category-icon-pro">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" />
+                            <path d="M11 18h2" />
+                        </svg>
+                    </div>
+                    <h4>الجوالات</h4>
+                    <p>احفظي ضمان الجوال والفاتورة والرقم التسلسلي.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="category-card-pro">
+                    <div class="category-icon-pro">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M5 3h14v18H5V3Z" />
+                            <path d="M5 9h14" />
+                            <path d="M9 6h1" />
+                            <path d="M9 14h6" />
+                        </svg>
+                    </div>
+                    <h4>الأجهزة المنزلية</h4>
+                    <p>ثلاجة، غسالة، مكيف، فرن، وكل جهاز له ضمان طويل.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="category-card-pro">
+                    <div class="category-icon-pro">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6 4h12v10H6V4Z" />
+                            <path d="M8 20h8" />
+                            <path d="M12 14v6" />
+                        </svg>
+                    </div>
+                    <h4>الإلكترونيات</h4>
+                    <p>لابتوب، شاشة، سماعات، أجهزة ذكية وملحقاتها.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="category-card-pro">
+                    <div class="category-icon-pro">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M8 3h8l1 8a5 5 0 0 1-10 0l1-8Z" />
+                            <path d="M12 16v5" />
+                            <path d="M8 21h8" />
+                        </svg>
+                    </div>
+                    <h4>أجهزة المطبخ</h4>
+                    <p>غلاية، قلاية هوائية، خلاط، ماكينة قهوة وغيرها.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="workflow-section">
+    <div class="container">
+
+        <div class="section-heading">
+            <span>طريقة الاستخدام</span>
+            <h2>أربع خطوات وتختفي فوضى الفواتير</h2>
+        </div>
+
+        <div class="workflow-line">
+
+            <div class="workflow-step">
+                <strong>01</strong>
+                <h5>أنشئي حساب</h5>
+                <p>حساب خاص يحفظ ضماناتك بشكل منفصل وآمن.</p>
+            </div>
+
+            <div class="workflow-step">
+                <strong>02</strong>
+                <h5>أضيفي المنتج</h5>
+                <p>سجلي بيانات المنتج والمتجر وتاريخ الشراء.</p>
+            </div>
+
+            <div class="workflow-step">
+                <strong>03</strong>
+                <h5>ارفعي الفاتورة</h5>
+                <p>صورة أو PDF تبقى محفوظة مع الضمان.</p>
+            </div>
+
+            <div class="workflow-step">
+                <strong>04</strong>
+                <h5>تابعي الحالة</h5>
+                <p>ساري، ينتهي قريبًا، أو منتهي.</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+
+        <div class="premium-cta">
+            <div>
+                <span>جاهزة تبدئين؟</span>
+                <h2>حوّلي ضمانات مشترياتك إلى أرشيف مرتب</h2>
+                <p>
+                    أضيفي أول منتج واحفظي فاتورته وتاريخ انتهاء ضمانه خلال أقل من دقيقة.
+                </p>
+            </div>
+
+            <a asp-controller="Guarantees" asp-action="Create" class="btn btn-secondary-custom">
+                إضافة أول ضمان
+            </a>
+        </div>
+
+    </div>
+</section>

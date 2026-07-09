@@ -1,50 +1,72 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html><html lang="ar" dir="rtl">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Damanak</title>
+    <title>@ViewData["Title"] - ضمانك</title>
     <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Changa:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Damanak.styles.css" asp-append-version="true" />
 </head>
+
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Damanak</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container"> <a class="navbar-brand d-flex align-items-center gap-3" asp-controller="Home"
+                                       asp-action="Index"> <img src="~/images/damank1.png" alt="ضمانك"> <span class="brand-text"
+                                                                                       data-ar="ضمانك" data-en="Damanak"> ضمانك </span> </a> <button class="navbar-toggler"
+                                                                          type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar"
+                                                                          aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"> <a class="nav-link" asp-controller="Home" asp-action="Index"
+                                                 data-ar="الرئيسية" data-en="Home"> الرئيسية </a> </li>
+                        <li class="nav-item"> <a class="nav-link" asp-controller="Guarantees" asp-action="Index"
+                                                     data-ar="ضماناتي" data-en="My Warranties"> ضماناتي </a> </li>
+                            <li class="nav-item"> <a class="nav-link" href="/#services" data-ar="الخدمات"
+                                                         data-en="Services"> الخدمات </a> </li>
+                                <li class="nav-item"> <a class="nav-link" href="#contact" data-ar="تواصل معنا"
+                                                             data-en="Contact"> تواصل معنا </a> </li>
+                                </ul>
+                                <div class="d-flex gap-2 align-items-center flex-wrap"> <button type="button" id="languageToggle"
+                                                                                                    class="btn btn-lang-toggle"> EN </button> @if (User.Identity != null &&
+                                    User.Identity.IsAuthenticated) {
+                                        <span class="text-primary-custom fw-bold"> <span
+                                            data-ar="مرحبًا،" data-en="Hello,">مرحبًا،</span> @User.Identity.Name </span>
+                                            <form asp-controller="Account" asp-action="Logout" method="post" class="m-0"> <button
+                                                type="submit" class="btn btn-outline-custom" data-ar="تسجيل الخروج" data-en="Logout">
+                                                تسجيل الخروج </button> </form>
+                                            } else
+                                            {
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 1448 - Damanak - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html>
+                                                <a asp-controller="Account" asp-action="Login"
+                                                   class="btn btn-outline-custom" data-ar="تسجيل الدخول" data-en="Login"> تسجيل الدخول </a> <a
+                                                asp-controller="Account" asp-action="Register" class="btn btn-primary-custom"
+                                                data-ar="إنشاء حساب" data-en="Create Account"> إنشاء حساب </a>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </nav>
+                        </header>
+                        <main> @RenderBody() </main>
+                        <footer class="footer" id="contact">
+                            <div class="container text-center">
+                                <h5 class="mb-2" data-ar="ضمانك" data-en="Damanak"> ضمانك </h5>
+                                <p class="mb-0" data-ar="ضماناتك وفواتيرك في مكان واحد" data-en="Your warranties and receipts in one place">
+                                    ضماناتك وفواتيرك في مكان واحد </p>
+                                </div>
+                            </footer>
+                            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                            <script src="~/js/site.js" asp-append-version="true"></script> @await RenderSectionAsync("Scripts", required: false)
+                        </body>
+
+                    </html>

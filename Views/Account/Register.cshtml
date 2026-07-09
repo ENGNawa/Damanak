@@ -1,0 +1,99 @@
+@model Damanak.Models.ViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "إنشاء حساب";
+}
+
+<section class="py-5">
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+
+                <div class="custom-card">
+
+                    <div class="text-center mb-4">
+                        <img src="~/images/damank1.png" class="hero-logo" alt="ضمانك" />
+
+                        <h2 class="section-title">
+                            إنشاء حساب جديد
+                        </h2>
+
+                        <p class="section-subtitle">
+                            سجلي بياناتك للبدء في توثيق وإدارة ضماناتك.
+                        </p>
+                    </div>
+
+                    <form asp-action="Register" method="post">
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="row g-4">
+
+                            <div class="col-md-6">
+                                <label asp-for="FullName" class="form-label">الاسم الكامل</label>
+                                <input asp-for="FullName" class="form-control" placeholder="اكتب الاسم الكامل" />
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="PhoneNumber" class="form-label">رقم الجوال</label>
+                                <input asp-for="PhoneNumber" class="form-control" placeholder="05xxxxxxxx" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="Email" class="form-label">البريد الإلكتروني</label>
+                                <input asp-for="Email" class="form-control" placeholder="example@email.com" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="City" class="form-label">المدينة</label>
+                                <input asp-for="City" class="form-control" placeholder="مثال: حائل" />
+                                <span asp-validation-for="City" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="Password" class="form-label">كلمة المرور</label>
+                                <input asp-for="Password" type="password" class="form-control" placeholder="******" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="ConfirmPassword" class="form-label">تأكيد كلمة المرور</label>
+                                <input asp-for="ConfirmPassword" type="password" class="form-control"
+                                       placeholder="******" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary-custom">
+                                إنشاء الحساب
+                            </button>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <span class="section-subtitle">لديك حساب؟</span>
+                            <a asp-controller="Account" asp-action="Login" class="text-secondary-custom fw-bold">
+                                تسجيل الدخول
+                            </a>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
